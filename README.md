@@ -11,6 +11,8 @@ Kinomia is one hub for all your wearables, and it's easy to use. It's an iPhone 
 
 The screenshots run on made up data. The source code is private; this repository is a public overview.
 
+The problem, the product choices and how the design changed in eight stages, with screenshots of each: [CASE-STUDY.md](CASE-STUDY.md).
+
 ## Contents
 
 - [Why Kinomia](#why-kinomia)
@@ -63,7 +65,7 @@ Kinomia puts every device in one app, organises the data by signal (heart rate, 
 | Garmin Enduro 2 and other Garmin watches | Through Apple Health from Garmin Connect, and from a Garmin Connect account export for older history | In daily use |
 | Garmin Edge 540 | Directly over Bluetooth (Direct mode) | Built, not yet tested on the hardware |
 | Amazfit Helio Strap | Through Apple Health from Zepp; directly over Bluetooth | Apple Health in daily use; Direct mode built, not yet tested |
-| Whoop | Through Apple Health and from a Whoop export; directly over Bluetooth | Built; calibration starts when my Whoop arrives |
+| Whoop | Through Apple Health and from a Whoop export; directly over Bluetooth | Built |
 | iPhone | Apple Health | In daily use |
 | Strava | Maps for your workouts; sending activities to Strava | Maps in daily use |
 | Komoot | Planned tours turned into Garmin courses | Built, waits for tests on the Garmins |
@@ -115,11 +117,10 @@ Shared test files (a "golden day" with known answers) pin the iPhone and the ser
 Kinomia runs on my own iPhone every day with a Garmin Enduro 2, a Garmin Edge 540 and an Amazfit Helio Strap.
 
 1. Test Direct mode on the Garmin Edge 540, so Kinomia reads the Garmin without waiting for Garmin Connect.
-2. Wear Garmin and Whoop together for 14 days to calibrate the Whoop readings.
-3. Ship a first launch that asks for your goals and the Apple Health permissions.
+2. Ship a first launch that asks for your goals and the Apple Health permissions.
 
 ## Built so far
 
-I started on 4 October 2026 and I'm building it alone. In four weeks the private repository reached 799 commits and about 109,000 lines of Swift, TypeScript and SQL, with 462 test files across 14 Swift packages and 6 TypeScript packages.
+I started on 4 October 2026 and I'm building it alone, with coding agents (Claude Code) working from my specs. By 22 November the private repository had about 1,000 commits, 41 merged pull requests and about 119,000 lines of Swift, TypeScript and SQL, with 274 test files across 14 Swift packages and 6 TypeScript packages.
 
 Copyright 2026 Simone Lovera. All rights reserved.
