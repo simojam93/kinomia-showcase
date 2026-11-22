@@ -4,6 +4,10 @@ Kinomia is an iPhone app that reads every wearable you own and gives you three n
 
 The code is private. Every screenshot comes from the app itself, built from the code as it was on that day and opened in its design preview, a mode that fills every screen with made up readings.
 
+![Kinomia on 22 November 2026: Home, the Ready page and Routes](design/today.png)
+
+Kinomia on 22 November 2026: Home, the Ready page and Routes. The rest of this page is how it got here.
+
 ## The problem
 
 I built Kinomia for myself. I train with a Garmin watch, a Garmin bike computer and an Amazfit Helio Strap, and I don't like their apps. Each device has its own app, its own charts and its own name for the same thing, so a simple morning question (how hard can I train today?) took three apps. Garmin Connect also writes to Apple Health late or not at all: on my account it wrote no heart rate to Apple Health from December 2025 to October 2026. I wore a Whoop for a while and stopped because of its subscription; the Amazfit strap does the job for me.
@@ -21,6 +25,8 @@ From that one problem come three goals.
 1. Three numbers each morning, Ready, Load and Sleep, from whichever devices have the data, without me deciding which device to trust.
 2. The data on time: last night's numbers ready when I wake up.
 3. Everything on the phone. The server knows my email address and nothing else.
+
+This page doesn't cover a business model or distribution. For now Kinomia is for me, and taking it to other people is a separate step with its own decisions: who pays, how people find it, where their data lives. I have ideas for that step, and going to market is the part of the job I already own at Forte AI.
 
 ## The product choices that make it usable
 
