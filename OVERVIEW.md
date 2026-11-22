@@ -33,25 +33,23 @@ The screens, devices, numbers and architecture behind kinomia. The story of the 
 
 Any other device that writes to Apple Health shows up too, with its name.
 
-## How the numbers work
+## The numbers
 
-Every formula is versioned, and each change goes into a changelog that the app shows on its methods page.
-
-| Number | Scale | What goes in |
+| Number | Scale | What it tells you |
 |---|---|---|
-| Ready | 0 to 100 | Last night's HRV, resting heart rate, breathing rate and Sleep score, each against your own 14 night average and 30 night spread. It needs 4 nights to start and reads as settled after 30 nights in 60 days. |
-| Load | 0 to 21 | Heart rate reserve minutes weighted by intensity (a TRIMP, training impulse), on a curve fitted to two years of Whoop strain. Your maximum heart rate is learned from your workouts. |
-| Sleep | 0 to 100 | How much of the sleep you needed you got, plus efficiency, consistency and calm. Your sleep need is learned from your last 28 nights and grows with a hard Load day and with sleep debt. |
-| Daytime stress | 0 to 100 | How far your heart rate sat above rest during the day, outside sleep and workouts, against your last 60 days. It's context only and never part of Ready. |
+| Ready | 0 to 100 | How recovered you are this morning |
+| Load | 0 to 21 | How much training stress you took on today, with a target for the day |
+| Sleep | 0 to 100 | How much of the sleep you needed you got |
+| Daytime stress | 0 to 100 | How your day went outside sleep and workouts. Context only, never part of Ready |
 
-Each device gets its own Ready, Load and Sleep. kinomia's number combines them: each device's readings are compared with that device's own history, and the results are averaged. Nights count only from devices that recorded at least 4 hours asleep, and Load only from devices that saw at least 80% of the workout minutes. So the morning number is there as soon as one device has synced, and it can take the night from one device and heart rate and HRV from another.
+Each device counts on its own scale, and kinomia combines them into one number. The morning number is there as soon as one device has synced. Every formula has a version number, and each change shows up in the app.
 
 kinomia shows numbers for training and recovery. It isn't a medical device.
 
 ## How your data flows
 
 1. Garmin Connect, Zepp and the other vendor apps write to Apple Health. kinomia reads Apple Health app by app and device by device, after you agree to a health data consent.
-2. In Direct mode kinomia pairs with the device over Bluetooth, downloads its files and decodes them on the iPhone, with no vendor app involved.
+2. In Direct mode kinomia talks to the device over Bluetooth, with no vendor app involved.
 3. Every reading lands in one SQLite database on the iPhone, one row per signal, source and day. Sources are never merged destructively: each keeps its own rows, and computed values are stored apart with their inputs.
 4. The formulas run on the iPhone. The server holds only your email account.
 5. Strava maps are fetched when you open a workout and kept for 48 hours at most, as Strava's API rules require.

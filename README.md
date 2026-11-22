@@ -27,7 +27,7 @@ There's no business model here yet. For now kinomia is for me; taking it to othe
 
 ## Product choices
 
-- Each device is compared with its own history, then kinomia averages them. The morning number shows as soon as one device has synced.
+- Each device counts on its own scale, then kinomia combines them into one number. The morning number shows as soon as one device has synced.
 - A workout recorded by two devices shows once. The device's own file wins.
 - When two heart rates differ, the chest strap wins over the wrist. kinomia doesn't ask.
 - kinomia's numbers come first. Each device's reading is one tap down.
