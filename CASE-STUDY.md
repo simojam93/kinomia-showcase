@@ -1,139 +1,96 @@
-# Kinomia: the product case study
+# Kinomia: case study
 
-Kinomia is an iPhone app that reads every wearable you own and gives you three numbers each morning: Ready, Load and Sleep. I built it alone in seven weeks, from 4 October to 22 November 2026, for my own training, and I use it every morning. I made every product and design decision in it. This page covers the problem, the vision and the one problem I picked first, the product choices that make it usable and how the design changed along the way, with screenshots of every stage.
+One app for every wearable you own. Three numbers each morning (Ready, Load, Sleep), with your data on your iPhone.
 
-The code is private. Every screenshot comes from the app itself, built from the code as it was on that day and opened in its design preview, a mode that fills every screen with made up readings.
+![Kinomia today: Home, the Ready page and Routes](design/today.png)
 
-![Kinomia on 22 November 2026: Home, the Ready page and Routes](design/today.png)
+| | |
+|---|---|
+| Role | Product, design and build, alone |
+| Time | 7 weeks, October and November 2026 |
+| Built with | SwiftUI, TypeScript, coding agents (Claude Code) |
+| Status | In daily use on my iPhone. Code private, screenshots on made up data |
 
-Kinomia on 22 November 2026: Home, the Ready page and Routes. The rest of this page is how it got here.
+## Why I built it
 
-## The problem
+I train with a Garmin watch, a Garmin bike computer and an Amazfit strap. That meant three apps, three sets of charts and three names for the same thing, with my data kept in three accounts. I wanted one place, and my data on my phone.
 
-I built Kinomia for myself. I train with a Garmin watch, a Garmin bike computer and an Amazfit Helio Strap, and I don't like their apps. Each device has its own app, its own charts and its own name for the same thing, so a simple morning question (how hard can I train today?) took three apps. Garmin Connect also writes to Apple Health late or not at all: on my account it wrote no heart rate to Apple Health from December 2025 to October 2026. I wore a Whoop for a while and stopped because of its subscription; the Amazfit strap does the job for me.
+## Vision and focus
 
-I also want my data with me. The vendors' apps keep it in their own accounts, and the apps that combine wearables keep it on their servers.
+The long term idea is one app for people who are healthy and train: devices, training, routes and later food. Route planning on the Mac, a chat about your numbers and TrainingPeaks plans are on the list.
 
-## The vision, and the one problem I picked first
+I started with one problem: one place, fed by each device's signals. Kinomia reads heart rate, sleep and workouts whoever made the device, so an old watch or a strap with no subscription is still worth wearing.
 
-The long term idea is one app for people who are healthy, train and want everything in one place: their devices, their training, their routes and, later, what they eat. Route planning inside the app, on the Mac too, a chat where you can ask about your numbers or tell it what you ate, and the training plans from TrainingPeaks next to the readings are on the list. Each of them would be a second problem today, so each waits.
+There's no business model here yet. For now Kinomia is for me; taking it to other people is a separate step, and go to market is what I already own at Forte AI.
 
-I picked one problem to solve first: one place for everything, fed by each device's signals. Kinomia reads what a device measures (heart rate, heart rate variability, sleep, workouts) and doesn't care who made it. So any device that still records a signal is worth wearing, including an old watch whose app you gave up on, or a strap that doesn't need a subscription.
+## Product choices
 
-From that one problem come three goals.
+- Each device is compared with its own history, then Kinomia averages them. The morning number shows as soon as one device has synced.
+- A workout recorded by two devices shows once. The device's own file wins.
+- When two heart rates differ, the chest strap wins over the wrist. Kinomia doesn't ask.
+- Kinomia's numbers come first. Each device's reading is one tap down.
+- Everything stays on the iPhone. The server knows only your email address.
 
-1. Three numbers each morning, Ready, Load and Sleep, from whichever devices have the data, without me deciding which device to trust.
-2. The data on time: last night's numbers ready when I wake up.
-3. Everything on the phone. The server knows my email address and nothing else.
+## How the design changed
 
-This page doesn't cover a business model or distribution. For now Kinomia is for me, and taking it to other people is a separate step with its own decisions: who pays, how people find it, where their data lives. I have ideas for that step, and going to market is the part of the job I already own at Forte AI.
+Every change followed the same steps: a written spec, two to six options rendered side by side, one choice, then a week of use.
 
-## The product choices that make it usable
-
-Each device gets its own Ready, Load and Sleep, compared with that device's own history. Kinomia's number averages them. A night counts only from a device that saw at least four hours of sleep, and Load only from devices that saw at least 80% of the workout's minutes. So the morning number is there as soon as one device has synced, and it can take the night from one device and the heart rate from another.
-
-Kinomia's numbers come first and each device's reading sits one tap down.
-
-A workout recorded by two devices shows once. Kinomia keeps one recording as the main one in a fixed order: the device's own file first, then the vendor's app through Apple Health, then Strava, and the longest when two tie. The others stay under Sources on the workout's page. When two devices disagree on heart rate by more than 10 beats per minute, Kinomia picks one by sensor (a chest strap before a wrist) and doesn't ask. You can still change it on the workout's page, and Kinomia remembers.
-
-Kinomia talks to Garmin, Amazfit and Whoop devices directly over Bluetooth when you choose to, so it doesn't wait for their apps. Apple Health stays the default, because it works with any device on day one.
-
-The data lives in one database on the iPhone, one row per signal, source and day. Sources are never merged in place: a combined value is stored apart, with the inputs it came from. You can export or erase everything from the app.
-
-Every formula has a version number, and each change goes into a changelog the app shows on its methods page. The formulas are written once, in TypeScript, and the iPhone runs that same code, so a number can't differ between the phone and the server.
-
-Strava's rules allow a map to be cached for seven days at most. Kinomia fetches a workout's map when you open it and drops it after 48 hours.
-
-Planned routes from Komoot become courses on the Garmin by themselves.
-
-## The design approach
-
-Every change went through the same steps.
-
-1. A written spec: the problem, the options and what stays fixed. The repository holds 19 of them.
-2. Renders of two to six options side by side, on made up data, before the code changed.
-3. A choice, written down with its reason.
-4. A pull request (a proposed change to the code, reviewed before it goes in), checked in the simulator.
-5. A week of use on my iPhone, then the next audit.
-
-A few rules held through every stage. Every sentence on screen carries a number, speaks to you in the second person and makes no medical claim; a test checks every sentence in the app's catalogue for a number and for banned words. The app is dark only, with one lilac accent. Colours, type sizes and spacing live in one file that generates both the app's Swift and the site's CSS.
-
-### 1. The first designed app, 8 October
+### 8 October · The first design
 
 ![Stage 1](design/stage-1.png)
 
-Today with the morning check in, the share card and You, with the switch that added each device's reading under Kinomia's.
+Rounded dials, one colour per number, a lilac accent, dark only. Three marks and six icons drawn; the lilac k won.
 
-I drew three marks and six app icons and chose a direction I called Quiet instrument: rounded square dials, numbers that line up in columns, one colour per number. The icon is the second one, a tuned version of the lilac k I'd liked from the start.
+![Brand proposals](design/brand-proposals.png)
 
-![Brand proposals: three marks and six app icons](design/brand-proposals.png)
-
-### 2. One problem at a time, 9 October
+### 9 October · One problem at a time
 
 ![Stage 2](design/stage-2.png)
 
-Today, Trends and You a day later. On screen the cut is small: the comparison lived in its own screen and cards, and those are gone.
+I cut the screen that compared devices side by side. It was a second problem.
 
-The first spec had a second idea: a screen that compared the devices side by side and showed where they disagreed. A day later I saw it as a loss of focus, a second problem next to the one I'd picked. I cut the Compare screen, its share card and its weekly notification, and each device's reading moved into a closed Sources row at the bottom of each page.
-
-### 3. The first day on a real iPhone, 13 October
+### 13 October · First day on a real iPhone
 
 ![Stage 3](design/stage-3.png)
 
-Today, Trends and You after the first day on the iPhone: one row per device and You laid out like the iPhone's Settings.
+The Garmin showed up twice, so the list became one row per device. Settings took the iPhone's own layout.
 
-My Garmin showed up twice in the device list, once over Bluetooth and once through Garmin Connect. The list became one row per physical device, each with its own page, and the settings took the layout of the iPhone's own Settings app.
-
-### 4. Whoop's structure, Kinomia's look, 17 October
+### 17 October · Whoop's order, our look
 
 ![Stage 4](design/stage-4.png)
 
-Home, the Ready page and Trends in Whoop's order: dials, then Vitals and Daytime stress, then My Day.
+I studied Whoop screen by screen and took its order: dials, one line, contributors, charts with little text.
 
-The app had the right numbers in the wrong order. Whoop has spent years deciding what a person sees first in the morning, so I studied its app screen by screen from five public walkthrough videos, about 735 frames, and wrote down the structure of each screen. I took the order (the dials, one line, the contributors against your last 30 days, charts with little text) and kept our look.
-
-### 5. A month of features, 20 November
+### 20 November · A month of features
 
 ![Stage 5](design/stage-5.png)
 
-Home, the Ready page and You on 20 November, before the cleanup.
+Daily use added features faster than it removed them. Too many sentences, some numbers shown twice.
 
-A month of daily use added features faster than it removed anything. Most screens carried a sentence explaining how they worked, and some numbers appeared twice on one page.
-
-### 6. A word or a number in place of a sentence, 21 November
+### 21 November · Fewer words
 
 ![Stage 6](design/stage-6.png)
 
-Home, the Ready page and Trends: one line under the dial, bars coloured by level.
+151 lines of text cut. Under each dial, one line: what moved it and what to do.
 
-I cut 151 lines of text from 28 files: no footer explaining a feature, no hint pointing to another screen. Under each dial there is now one line that says what moved the number and what to do, for example "Tonight you need 7:50: be in bed by 22:40."
-
-### 7. It read as Android, 22 November
+### 22 November · It read as Android
 
 ![Stage 7](design/stage-7.png)
 
-You, the Ready page and Routes with plain SF Symbols in Apple's system colours and sentence case labels.
+An audit found eleven details from Google's Material design, such as pastel tiles and uppercase labels. I tested three directions and chose Apple's system colours with no tiles.
 
-The app felt foreign on my own iPhone, and an audit found why: eleven details borrowed from Google's Material design. Pastel tiles under white glyphs (white on lilac has a contrast of about 1.9 to 1), glyphs in grey boxes, uppercase spaced labels, lilac pill toggles and fixed font sizes. I rendered three directions on the same screens.
+![Three icon directions](design/ios-icons-ab.png)
 
-![Three icon directions on the same screens](design/ios-icons-ab.png)
-
-I chose Apple's system colours and went one step further: no tiles anywhere. Rows draw plain SF Symbols (Apple's icon set), labels are in sentence case and words follow the text size set in iOS.
-
-### 8. One header on every tab, 22 November
+### 22 November · One header everywhere
 
 ![Stage 8](design/stage-8.png)
 
-Home, Trends and Routes with the same header and titles in the page.
+Six layouts rendered and measured. The same header on every tab, titles in the page, and Routes became a tab.
 
-Home showed a k mark that did nothing when tapped, and Routes sat three taps deep although I used it every week. I rendered six title layouts and measured where content starts in each, from 114 to 175 points from the top.
-
-![Six header and title layouts](design/header-titles.png)
-
-Every tab now has the same header: your profile, the wordmark (it brings you back to today) and your devices. Titles sit in the page. Routes became a tab. A header like this one was already there on 13 October (stage 3); the Whoop restructure replaced it with the k mark, and five weeks of use brought it back with a job to do.
+![Six header layouts](design/header-titles.png)
 
 ## How it was built
 
-Every decision on this page is mine: the problem, what to fix first, each product rule, the look and the eight redesigns. I wrote the specs, judged every render on my own iPhone, threw away the options that didn't work and reviewed what shipped. The code is written with coding agents (Claude Code) working from those specs, which is how one person could build this much. In seven weeks that came to about 1,000 commits, 41 merged pull requests and about 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
+Every decision here is mine. Coding agents wrote the code from my specs, and I reviewed what shipped: about 1,000 commits, 41 merged pull requests and 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
 
 Kinomia shows numbers for training and recovery. It isn't a medical device.
