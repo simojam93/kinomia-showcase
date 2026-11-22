@@ -7,7 +7,7 @@ One app for every wearable you own. Three numbers each morning (Ready, Load, Sle
 | | |
 |---|---|
 | Role | Product, design and build, alone |
-| Time | 7 weeks, October and November 2026 |
+| Time | 7 weeks, October and November 2026, as a side project next to my full time job at Forte AI |
 | Built with | SwiftUI, TypeScript, coding agents (Claude Code) |
 | Status | In daily use on my iPhone. Code private, screenshots on made up data |
 
@@ -33,64 +33,54 @@ There's no business model here yet. For now Kinomia is for me; taking it to othe
 
 ## How the design changed
 
-Every change followed the same steps: a written spec, two to six options rendered side by side, one choice, then a week of use.
+Every change followed the same steps: a written spec, two to six options rendered side by side, one choice, then a week of use. Below, the same four screens on five dates.
 
-### 8 October · The first design
+### Home
 
-![Stage 1](design/stage-1.png)
+Home is the first screen of the morning, so it changed the most.
 
-Rounded dials, one colour per number, a lilac accent, dark only. Three marks and six icons drawn; the lilac k won.
+![Home on five dates](design/evolution-home.png)
 
-![Brand proposals](design/brand-proposals.png)
+The morning check in and the long sentences went. The three dials stayed on top, with one line under them that says what to do today.
 
-### 9 October · One problem at a time
+### Ready
 
-![Stage 2](design/stage-2.png)
+Tap a dial and you get its page. This is Ready.
 
-I cut the screen that compared devices side by side. It was a second problem.
+![The Ready page on five dates](design/evolution-ready.png)
 
-### 13 October · First day on a real iPhone
+It started as a list of weighted factors. Now it's today against your last 30 days, with one line on what to do.
 
-![Stage 3](design/stage-3.png)
+### Trends
 
-The Garmin showed up twice, so the list became one row per device. Settings took the iPhone's own layout.
+Trends shows every number over time.
 
-### 17 October · Whoop's order, our look
+![Trends on five dates](design/evolution-trends.png)
 
-![Stage 4](design/stage-4.png)
+Lines became bars coloured by level, each one tappable, and the periods grew from 90 days to a year.
 
-I studied Whoop screen by screen and took its order: dials, one line, contributors, charts with little text.
+### You
 
-### 20 November · A month of features
+You holds your account, your devices and the settings.
 
-![Stage 5](design/stage-5.png)
+![You on five dates](design/evolution-you.png)
 
-Daily use added features faster than it removed them. Too many sentences, some numbers shown twice.
+It took the layout of the iPhone's own Settings, then lost its coloured tiles, and now opens from the header on every tab.
 
-### 21 November · Fewer words
+### What changed and why
 
-![Stage 6](design/stage-6.png)
-
-151 lines of text cut. Under each dial, one line: what moved it and what to do.
-
-### 22 November · It read as Android
-
-![Stage 7](design/stage-7.png)
-
-An audit found eleven details from Google's Material design, such as pastel tiles and uppercase labels. I tested three directions and chose Apple's system colours with no tiles.
-
-![Three icon directions](design/ios-icons-ab.png)
-
-### 22 November · One header everywhere
-
-![Stage 8](design/stage-8.png)
-
-Six layouts rendered and measured. The same header on every tab, titles in the page, and Routes became a tab.
-
-![Six header layouts](design/header-titles.png)
+| Date | What changed | Why |
+|---|---|---|
+| 8 Oct | First design: rounded dials, one colour per number, dark only | One look for the app, the site and the dashboard |
+| 9 Oct | Cut the screen that compared devices side by side | It was a second problem |
+| 13 Oct | One row per device, settings laid out like the iPhone's | On a real iPhone the Garmin showed up twice |
+| 17 Oct | Whoop's order: dials, one line, contributors, charts with little text | The right numbers in the wrong order |
+| 21 Nov | 151 lines of text cut, one line under each dial | Too many sentences, some numbers shown twice |
+| 22 Nov | Apple's system colours, no tiles, sentence case | It read as an Android app |
+| 22 Nov | One header on every tab, Routes became a tab | Routes sat three taps deep |
 
 ## How it was built
 
-Every decision here is mine. Coding agents wrote the code from my specs, and I reviewed what shipped: about 1,000 commits, 41 merged pull requests and 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
+Kinomia is a side project, built in the time left around my full time job as chief product officer at Forte AI, so the seven weeks are longer than the same work would take full time. Every decision here is mine. Coding agents wrote the code from my specs, and I reviewed what shipped: about 1,000 commits, 41 merged pull requests and 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
 
 Kinomia shows numbers for training and recovery. It isn't a medical device.
