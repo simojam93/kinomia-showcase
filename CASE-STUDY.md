@@ -1,8 +1,8 @@
-# Kinomia: case study
+# kinomia: case study
 
 One app for every wearable you own. Three numbers each morning (Ready, Load, Sleep), with your data on your iPhone.
 
-![Kinomia today: Home, the Ready page and Routes](design/today.png)
+![kinomia today: Home, the Ready page and Routes](design/today.png)
 
 | | |
 |---|---|
@@ -19,16 +19,16 @@ I train with a Garmin watch, a Garmin bike computer and an Amazfit strap. That m
 
 The long term idea is one app for people who are healthy and train: devices, training, routes and later food. Route planning on the Mac, a chat about your numbers and TrainingPeaks plans are on the list.
 
-I started with one problem: one place, fed by each device's signals. Kinomia reads heart rate, sleep and workouts whoever made the device, so an old watch or a strap with no subscription is still worth wearing.
+I started with one problem: one place, fed by each device's signals. kinomia reads heart rate, sleep and workouts whoever made the device, so an old watch or a strap with no subscription is still worth wearing.
 
-There's no business model here yet. For now Kinomia is for me; taking it to other people is a separate step, and go to market is what I already own at Forte AI.
+There's no business model here yet. For now kinomia is for me; taking it to other people is a separate step, and go to market is what I already own at Forte AI.
 
 ## Product choices
 
-- Each device is compared with its own history, then Kinomia averages them. The morning number shows as soon as one device has synced.
+- Each device is compared with its own history, then kinomia averages them. The morning number shows as soon as one device has synced.
 - A workout recorded by two devices shows once. The device's own file wins.
-- When two heart rates differ, the chest strap wins over the wrist. Kinomia doesn't ask.
-- Kinomia's numbers come first. Each device's reading is one tap down.
+- When two heart rates differ, the chest strap wins over the wrist. kinomia doesn't ask.
+- kinomia's numbers come first. Each device's reading is one tap down.
 - Everything stays on the iPhone. The server knows only your email address.
 
 ## How the design changed
@@ -81,6 +81,6 @@ It took the layout of the iPhone's own Settings, then lost its coloured tiles, a
 
 ## How it was built
 
-Kinomia is a side project, built in the time left around my full time job as chief product officer at Forte AI, so the seven weeks are longer than the same work would take full time. Every decision here is mine. Coding agents wrote the code from my specs, and I reviewed what shipped: about 1,000 commits, 41 merged pull requests and 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
+kinomia is a side project, built in the time left around my full time job as chief product officer at Forte AI, so the seven weeks are longer than the same work would take full time. Every decision here is mine. Coding agents wrote the code from my specs, and I reviewed what shipped: about 1,000 commits, 41 merged pull requests and 119,000 lines of Swift, TypeScript and SQL, with 274 test files.
 
-Kinomia shows numbers for training and recovery. It isn't a medical device.
+kinomia shows numbers for training and recovery. It isn't a medical device.

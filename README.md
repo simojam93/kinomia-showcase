@@ -1,6 +1,6 @@
-# Kinomia
+# kinomia
 
-Kinomia is one hub for all your wearables, and it's easy to use. It's an iPhone app that reads every device you own (a Garmin watch, a Garmin bike computer, an Amazfit Helio Strap, a Whoop, your iPhone) and gives you three numbers each morning: Ready, Load and Sleep. Your health data stays on your iPhone.
+kinomia is one hub for all your wearables, and it's easy to use. It's an iPhone app that reads every device you own (a Garmin watch, a Garmin bike computer, an Amazfit Helio Strap, a Whoop, your iPhone) and gives you three numbers each morning: Ready, Load and Sleep. Your health data stays on your iPhone.
 
 <p>
 <img src="screenshots/home.png" width="200" alt="Home: Ready 72, Load 13.4, Sleep 95%">
@@ -15,7 +15,7 @@ The problem, the product choices and how the design changed in eight stages, wit
 
 ## Contents
 
-- [Why Kinomia](#why-kinomia)
+- [Why kinomia](#why-kinomia)
 - [What you get](#what-you-get)
 - [Devices and services](#devices-and-services)
 - [How the numbers work](#how-the-numbers-work)
@@ -24,7 +24,7 @@ The problem, the product choices and how the design changed in eight stages, wit
 - [Status and next steps](#status-and-next-steps)
 - [Built so far](#built-so-far)
 
-## Why Kinomia
+## Why kinomia
 
 People who train with more than one device live with four problems every day.
 
@@ -33,7 +33,7 @@ People who train with more than one device live with four problems every day.
 3. Every device has its own app. A Garmin, an Amazfit Helio Strap and a Whoop mean three apps to open each morning, each with its own charts and its own names for the same thing.
 4. Two devices that track the same night or the same workout give two different values, and you don't know which one to look at.
 
-Kinomia puts every device in one app, organises the data by signal (heart rate, HRV, sleep, workouts) with the source written next to every reading, and combines the devices into one value per day.
+kinomia puts every device in one app, organises the data by signal (heart rate, HRV, sleep, workouts) with the source written next to every reading, and combines the devices into one value per day.
 
 ## What you get
 
@@ -45,7 +45,7 @@ Kinomia puts every device in one app, organises the data by signal (heart rate, 
 | Sleep | Stages, efficiency, consistency, bed and wake times, and the sleep you need tonight. |
 | Trends | Every number over 7 days, 4 weeks, 3 months or 1 year. Each weekly bar can be tapped in place. |
 | Activity | Every workout from every device, by days or weeks, with filters. A workout recorded by two devices shows once, with both recordings merged. Its page has the map, heart rate and the Load it added. |
-| Devices | Each device, how it reaches Kinomia (through Apple Health or directly over Bluetooth), what it measures and when it last synced. |
+| Devices | Each device, how it reaches kinomia (through Apple Health or directly over Bluetooth), what it measures and when it last synced. |
 | Journal and behaviors | A short daily log, and how each behavior went along with your Ready. |
 | Weekly and monthly review | A summary of the last 7 or 30 days. |
 | Share | Cards for Ready, Load, Sleep, a week, a workout or your devices, in seven color palettes, sized for a post or a story. |
@@ -60,7 +60,7 @@ Kinomia puts every device in one app, organises the data by signal (heart rate, 
 
 ## Devices and services
 
-| Device or service | How it reaches Kinomia | Status |
+| Device or service | How it reaches kinomia | Status |
 |---|---|---|
 | Garmin Enduro 2 and other Garmin watches | Through Apple Health from Garmin Connect, and from a Garmin Connect account export for older history | In daily use |
 | Garmin Edge 540 | Directly over Bluetooth (Direct mode) | Built, not yet tested on the hardware |
@@ -83,14 +83,14 @@ Every formula is versioned, and each change goes into a changelog that the app s
 | Sleep | 0 to 100 | How much of the sleep you needed you got, plus efficiency, consistency and calm. Your sleep need is learned from your last 28 nights and grows with a hard Load day and with sleep debt. |
 | Daytime stress | 0 to 100 | How far your heart rate sat above rest during the day, outside sleep and workouts, against your last 60 days. It's context only and never part of Ready. |
 
-Each device gets its own Ready, Load and Sleep. Kinomia's number combines them: each device's readings are compared with that device's own history, and the results are averaged. Nights count only from devices that recorded at least 4 hours asleep, and Load only from devices that saw at least 80% of the workout minutes. So the morning number is there as soon as one device has synced, and it can take the night from one device and heart rate and HRV from another.
+Each device gets its own Ready, Load and Sleep. kinomia's number combines them: each device's readings are compared with that device's own history, and the results are averaged. Nights count only from devices that recorded at least 4 hours asleep, and Load only from devices that saw at least 80% of the workout minutes. So the morning number is there as soon as one device has synced, and it can take the night from one device and heart rate and HRV from another.
 
-Kinomia shows numbers for training and recovery. It isn't a medical device.
+kinomia shows numbers for training and recovery. It isn't a medical device.
 
 ## How your data flows
 
-1. Garmin Connect, Zepp and the other vendor apps write to Apple Health. Kinomia reads Apple Health app by app and device by device, after you agree to a health data consent.
-2. In Direct mode Kinomia pairs with the device over Bluetooth, downloads its files and decodes them on the iPhone, with no vendor app involved.
+1. Garmin Connect, Zepp and the other vendor apps write to Apple Health. kinomia reads Apple Health app by app and device by device, after you agree to a health data consent.
+2. In Direct mode kinomia pairs with the device over Bluetooth, downloads its files and decodes them on the iPhone, with no vendor app involved.
 3. Every reading lands in one SQLite database on the iPhone, one row per signal, source and day. Sources are never merged destructively: each keeps its own rows, and computed values are stored apart with their inputs.
 4. The formulas run on the iPhone. The server holds only your email account.
 5. Strava maps are fetched when you open a workout and kept for 48 hours at most, as Strava's API rules require.
@@ -114,9 +114,9 @@ Shared test files (a "golden day" with known answers) pin the iPhone and the ser
 
 ## Status and next steps
 
-Kinomia runs on my own iPhone every day with a Garmin Enduro 2, a Garmin Edge 540 and an Amazfit Helio Strap.
+kinomia runs on my own iPhone every day with a Garmin Enduro 2, a Garmin Edge 540 and an Amazfit Helio Strap.
 
-1. Test Direct mode on the Garmin Edge 540, so Kinomia reads the Garmin without waiting for Garmin Connect.
+1. Test Direct mode on the Garmin Edge 540, so kinomia reads the Garmin without waiting for Garmin Connect.
 2. Ship a first launch that asks for your goals and the Apple Health permissions.
 
 ## Built so far
